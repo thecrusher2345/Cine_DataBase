@@ -68,7 +68,7 @@ public class ReservaBeans {
         return inc;
     }
     
-    public void insertar_pelicula() throws Exception {
+    public void insertar_reserva() throws Exception {
 
         String cadena = "insert into reservas values('" + getReserva_id()+ "','" + getFuncion_id()+ "','" + getCliente_id()+ "','" + getCantidad_tickets()+ "')";
         bd.actualizabd(cadena);
@@ -80,14 +80,14 @@ public class ReservaBeans {
 
     }
     
-    public void eliminar_pelicula() throws Exception{
+    public void eliminar_reserva() throws Exception{
          String cadena ="DELETE FROM reservas WHERE id='"+getReserva_id()+"'";
         bd.actualizabd(cadena);
         
     }
     
-    public void actulizar_pelicula() throws Exception{
-        String cadena ="UPDATE peliculas set reserva_id='"+getReserva_id()+"', funcion_id='"+getFuncion_id()+"', cliente_id='"+getCliente_id()+"', cantidad_tickets='"+getCantidad_tickets()+"' WHERE id='"+getReserva_id()+"'";
+    public void actulizar_reserva() throws Exception{
+        String cadena ="UPDATE reservas set reserva_id='"+getReserva_id()+"', funcion_id='"+getFuncion_id()+"', cliente_id='"+getCliente_id()+"', cantidad_tickets='"+getCantidad_tickets()+"' WHERE id='"+getReserva_id()+"'";
         bd.actualizabd(cadena);
         
     }

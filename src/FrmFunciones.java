@@ -1,19 +1,10 @@
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.logging.Formatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -273,7 +264,7 @@ public class FrmFunciones extends javax.swing.JFrame {
             txtfecha.setText(horactualformat);
             this.mostrar(jtpelicula, "SELECT * FROM peliculas p");
             this.mostrar(jtsalas, "SELECT * FROM salas s");
-            this.mostrar(jtfunciones, "SELECT * FROM funciones f");
+            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error" + e.toString());
         }
@@ -292,7 +283,7 @@ public class FrmFunciones extends javax.swing.JFrame {
             fb.insertar_funcion();
             this.mostrar(jtpelicula, "SELECT * FROM peliculas p");
             this.mostrar(jtsalas, "SELECT * FROM salas s");
-            this.mostrar(jtfunciones, "SELECT * FROM funciones f");
+            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -330,9 +321,7 @@ public class FrmFunciones extends javax.swing.JFrame {
     
     private void MouseClickpeliculas(){
         int fila1= jtpelicula.getSelectedRow();
-        int fila2= jtsalas.getSelectedRow();
         txtpeliculaid.setText(jtpelicula.getModel().getValueAt(fila1, 0).toString());
-        txtsalaid.setText(jtsalas.getModel().getValueAt(fila2, 0).toString());
         
         
     }
@@ -353,7 +342,7 @@ public class FrmFunciones extends javax.swing.JFrame {
             fb.setSala_id(Integer.parseInt(txtfecha.getText()));
             fb.actulizar_funcion();
             
-            this.mostrar(jtfunciones, "SELECT * FROM salas s");
+            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -365,7 +354,7 @@ public class FrmFunciones extends javax.swing.JFrame {
             FuncionesBeans fb = new FuncionesBeans();
             fb.setFuncion_id(Integer.parseInt(txtfuncionid.getText()));
             fb.actulizar_funcion();
-            this.mostrar(jtfunciones, "SELECT * FROM clientes c");
+            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
