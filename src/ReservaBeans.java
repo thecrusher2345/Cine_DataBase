@@ -88,8 +88,7 @@ public class ReservaBeans {
     
     public void actulizar_reserva() throws Exception{
         String cadena ="UPDATE reservas set reserva_id='"+getReserva_id()+"', funcion_id='"+getFuncion_id()+"', cliente_id='"+getCliente_id()+"', cantidad_tickets='"+getCantidad_tickets()+"' WHERE id='"+getReserva_id()+"'";
-        bd.actualizabd(cadena);
-        
-    }
+
     
+}
 }

@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmPeliculas.java</file>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/accesobd.java</file>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmFunciones.java</file>
+            <file>file:/B:/NetBeansProjects/aplicacioncs/src/ReservaBeans.java</file>
+            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmReservas.java</file>
+            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmCliente.java</file>
             <file>file:/B:/NetBeansProjects/aplicacioncs/src/aplicaccioncs.java</file>
+            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmFunciones.java</file>
             <file>file:/B:/NetBeansProjects/aplicacioncs/src/FuncionesBeans.java</file>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/PeliculasBeans.java</file>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/FrmSalas.java</file>
             <file>file:/B:/NetBeansProjects/aplicacioncs/src/ClienteBeans.java</file>
-            <file>file:/B:/NetBeansProjects/aplicacioncs/src/SalaBeans.java</file>
         </group>
     </open-files>
 </project-private>
