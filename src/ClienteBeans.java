@@ -7,7 +7,7 @@
  *
  * @author usuario
  */
-
+//sdfsdf
 import java.sql.*;
 public class ClienteBeans {
     //vamos a llamar cada clse para cada consulta para la interfaz grafica del usuario
