@@ -335,7 +335,7 @@ public class FrmSalas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
         }
     }
-    //awebo
+    //awebohhh
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
