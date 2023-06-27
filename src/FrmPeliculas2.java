@@ -49,6 +49,10 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
         jTextField6 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(242, 239, 223));
+
+        jtpeliculas.setBackground(new java.awt.Color(208, 217, 212));
+        jtpeliculas.setForeground(new java.awt.Color(89, 85, 76));
         jtpeliculas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -60,12 +64,19 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
                 "Id", "Titulo", "Genero", "Duracion", "Clasificacion"
             }
         ));
+        jtpeliculas.setGridColor(new java.awt.Color(89, 85, 76));
         jScrollPane1.setViewportView(jtpeliculas);
 
+        jLabel3.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Genero");
 
+        jLabel4.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Duracion");
 
+        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
+        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
         btnactualizar.setText("Actualizar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,10 +84,20 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Clasificacion");
 
+        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
         btneliminar.setText("Eliminar");
 
+        txtid.setBackground(new java.awt.Color(208, 217, 212));
+        txtid.setForeground(new java.awt.Color(89, 85, 76));
+        txtid.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
         btnenviar.setText("Enviar");
         btnenviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,12 +105,17 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
             }
         });
 
+        txttitulo.setBackground(new java.awt.Color(208, 217, 212));
+        txttitulo.setForeground(new java.awt.Color(89, 85, 76));
+        txttitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txttitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txttituloActionPerformed(evt);
             }
         });
 
+        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
         btnnuevo.setText("Nuevo");
         btnnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,21 +123,39 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
             }
         });
 
+        txtgenero.setBackground(new java.awt.Color(208, 217, 212));
+        txtgenero.setForeground(new java.awt.Color(89, 85, 76));
+        txtgenero.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        txtduracion.setBackground(new java.awt.Color(208, 217, 212));
+        txtduracion.setForeground(new java.awt.Color(89, 85, 76));
+        txtduracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        txtclasificacion.setBackground(new java.awt.Color(208, 217, 212));
+        txtclasificacion.setForeground(new java.awt.Color(89, 85, 76));
+        txtclasificacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtclasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtclasificacionActionPerformed(evt);
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Id");
 
+        jTextField6.setBackground(new java.awt.Color(208, 217, 212));
+        jTextField6.setForeground(new java.awt.Color(89, 85, 76));
         jTextField6.setText("Buscar.....");
+        jTextField6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Titulo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

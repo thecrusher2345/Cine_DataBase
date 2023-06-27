@@ -33,6 +33,8 @@ public class FrmSalas2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         btnnuevo = new javax.swing.JButton();
         btnenviar = new javax.swing.JButton();
         lblID = new javax.swing.JLabel();
@@ -47,45 +49,89 @@ public class FrmSalas2 extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTsalas = new javax.swing.JTable();
 
+        jScrollPane2.setViewportView(jEditorPane1);
+
+        setBackground(new java.awt.Color(242, 239, 223));
+
+        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
         btnnuevo.setText("Nuevo");
+        btnnuevo.setBorderPainted(false);
         btnnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnuevoActionPerformed(evt);
             }
         });
 
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
         btnenviar.setText("Enviar");
+        btnenviar.setFocusPainted(false);
         btnenviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnenviarActionPerformed(evt);
             }
         });
 
+        lblID.setBackground(new java.awt.Color(208, 217, 212));
+        lblID.setForeground(new java.awt.Color(51, 51, 51));
         lblID.setText("ID");
 
+        jButton3.setBackground(new java.awt.Color(89, 85, 76));
+        jButton3.setForeground(new java.awt.Color(208, 217, 212));
         jButton3.setText("Actualizar");
+        jButton3.setBorderPainted(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setDefaultCapable(false);
+        jButton3.setFocusPainted(false);
+        jButton3.setFocusable(false);
+        jButton3.setNextFocusableComponent(JTsalas);
+        jButton3.setSelected(true);
+        jButton3.setVerifyInputWhenFocusTarget(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
+        lblnombresala.setBackground(new java.awt.Color(208, 217, 212));
+        lblnombresala.setForeground(new java.awt.Color(51, 51, 51));
         lblnombresala.setText("Nombre");
 
+        jButton4.setBackground(new java.awt.Color(89, 85, 76));
+        jButton4.setForeground(new java.awt.Color(208, 217, 212));
         jButton4.setText("Eliminar");
+        jButton4.setFocusPainted(false);
 
+        lblcapacidad.setBackground(new java.awt.Color(208, 217, 212));
+        lblcapacidad.setForeground(new java.awt.Color(51, 51, 51));
         lblcapacidad.setText("Cantidad");
 
+        txtid.setBackground(new java.awt.Color(208, 217, 212));
+        txtid.setForeground(new java.awt.Color(89, 85, 76));
+        txtid.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidActionPerformed(evt);
             }
         });
 
+        txtnombre.setBackground(new java.awt.Color(208, 217, 212));
+        txtnombre.setForeground(new java.awt.Color(89, 85, 76));
         txtnombre.setText("A-1");
+        txtnombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jTextField4.setText("jTextField4");
+        txtcapacidad.setBackground(new java.awt.Color(208, 217, 212));
+        txtcapacidad.setForeground(new java.awt.Color(89, 85, 76));
+        txtcapacidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        jTextField4.setBackground(new java.awt.Color(208, 217, 212));
+        jTextField4.setForeground(new java.awt.Color(89, 85, 76));
+        jTextField4.setText("Buscar...");
+        jTextField4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        JTsalas.setBackground(new java.awt.Color(208, 217, 212));
+        JTsalas.setForeground(new java.awt.Color(89, 85, 76));
         JTsalas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -97,6 +143,7 @@ public class FrmSalas2 extends javax.swing.JPanel {
                 "Id", "Nombre", "Cantidad"
             }
         ));
+        JTsalas.setGridColor(new java.awt.Color(89, 85, 76));
         JTsalas.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 JTsalasAncestorAdded(evt);
@@ -169,7 +216,7 @@ public class FrmSalas2 extends javax.swing.JPanel {
                     .addComponent(btnenviar)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,7 +235,7 @@ public class FrmSalas2 extends javax.swing.JPanel {
             // TODO add your handling code here:
             this.Actualizar();
         } catch (Exception ex) {
-            Logger.getLogger(FrmSalas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrmSalas2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -301,7 +348,9 @@ public class FrmSalas2 extends javax.swing.JPanel {
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblcapacidad;

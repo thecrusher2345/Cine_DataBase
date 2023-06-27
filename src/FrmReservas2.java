@@ -80,8 +80,18 @@ public class FrmReservas2 extends javax.swing.JPanel {
         jMenu6.setText("Edit");
         jMenuBar3.add(jMenu6);
 
+        setBackground(new java.awt.Color(242, 239, 223));
+
+        jLabel4.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Tickets");
 
+        txtreservas_id.setBackground(new java.awt.Color(208, 217, 212));
+        txtreservas_id.setForeground(new java.awt.Color(89, 85, 76));
+        txtreservas_id.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
         btneliminar.setText("Eliminar");
         btneliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,12 +99,17 @@ public class FrmReservas2 extends javax.swing.JPanel {
             }
         });
 
+        txtfuncion_id.setBackground(new java.awt.Color(208, 217, 212));
+        txtfuncion_id.setForeground(new java.awt.Color(89, 85, 76));
+        txtfuncion_id.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtfuncion_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfuncion_idActionPerformed(evt);
             }
         });
 
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
         btnenviar.setText("Enviar");
         btnenviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,12 +117,17 @@ public class FrmReservas2 extends javax.swing.JPanel {
             }
         });
 
+        txtcliente_id.setBackground(new java.awt.Color(208, 217, 212));
+        txtcliente_id.setForeground(new java.awt.Color(89, 85, 76));
+        txtcliente_id.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtcliente_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcliente_idActionPerformed(evt);
             }
         });
 
+        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
         btnnuevo.setText("Nuevo");
         btnnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,12 +135,17 @@ public class FrmReservas2 extends javax.swing.JPanel {
             }
         });
 
+        txttickets.setBackground(new java.awt.Color(208, 217, 212));
+        txttickets.setForeground(new java.awt.Color(89, 85, 76));
+        txttickets.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txttickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtticketsActionPerformed(evt);
             }
         });
 
+        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
+        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
         btnactualizar.setText("Actualizar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,8 +153,18 @@ public class FrmReservas2 extends javax.swing.JPanel {
             }
         });
 
-        jTextField5.setText("jTextField5");
+        jTextField5.setBackground(new java.awt.Color(208, 217, 212));
+        jTextField5.setForeground(new java.awt.Color(89, 85, 76));
+        jTextField5.setText("Buscar...");
+        jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
+        jtfuncion.setBackground(new java.awt.Color(208, 217, 212));
+        jtfuncion.setForeground(new java.awt.Color(89, 85, 76));
         jtfuncion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -141,6 +176,7 @@ public class FrmReservas2 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtfuncion.setGridColor(new java.awt.Color(89, 85, 76));
         jtfuncion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtfuncionMouseClicked(evt);
@@ -148,8 +184,12 @@ public class FrmReservas2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtfuncion);
 
+        jLabel1.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Reservas");
 
+        jtcliente.setBackground(new java.awt.Color(208, 217, 212));
+        jtcliente.setForeground(new java.awt.Color(89, 85, 76));
         jtcliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -161,6 +201,7 @@ public class FrmReservas2 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtcliente.setGridColor(new java.awt.Color(89, 85, 76));
         jtcliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtclienteMouseClicked(evt);
@@ -168,10 +209,16 @@ public class FrmReservas2 extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jtcliente);
 
+        jLabel2.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Funcion");
 
+        jLabel3.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Cliente");
 
+        jtreserva.setBackground(new java.awt.Color(208, 217, 212));
+        jtreserva.setForeground(new java.awt.Color(89, 85, 76));
         jtreserva.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -183,6 +230,7 @@ public class FrmReservas2 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtreserva.setGridColor(new java.awt.Color(89, 85, 76));
         jtreserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtreservaMouseClicked(evt);
@@ -197,13 +245,10 @@ public class FrmReservas2 extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -311,7 +356,7 @@ public class FrmReservas2 extends javax.swing.JPanel {
             // TODO add your handling code here:
             this.Actualizar();
         } catch (Exception ex) {
-            Logger.getLogger(FrmReservas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrmReservas2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnactualizarActionPerformed
 
@@ -329,6 +374,10 @@ public class FrmReservas2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.MouseClick();
     }//GEN-LAST:event_jtreservaMouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
  public void nuevo() {
         try {
             ReservaBeans rb = new ReservaBeans();

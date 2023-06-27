@@ -57,6 +57,7 @@ public class FmrClientes2 extends javax.swing.JPanel {
         lbltelefono.setForeground(new java.awt.Color(51, 51, 51));
         lbltelefono.setText("Telefono");
 
+        txtcedula.setEditable(false);
         txtcedula.setBackground(new java.awt.Color(208, 217, 212));
         txtcedula.setColumns(5);
         txtcedula.setForeground(new java.awt.Color(89, 85, 76));
@@ -117,7 +118,6 @@ public class FmrClientes2 extends javax.swing.JPanel {
             }
         });
 
-        lblcedula.setBackground(new java.awt.Color(208, 217, 212));
         lblcedula.setForeground(new java.awt.Color(51, 51, 51));
         lblcedula.setText("Cedula");
         lblcedula.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -171,6 +171,7 @@ public class FmrClientes2 extends javax.swing.JPanel {
                 "Cedula", "Nombres", "Apellidos", "E-mail", "Telefono"
             }
         ));
+        Jcliente.setGridColor(new java.awt.Color(89, 85, 76));
         Jcliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JclienteMouseClicked(evt);
@@ -265,7 +266,7 @@ public class FmrClientes2 extends javax.swing.JPanel {
             // TODO add your handling code here:
             this.actualizar();
         } catch (Exception ex) {
-            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FmrClientes2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 

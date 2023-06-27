@@ -53,10 +53,29 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtfunciones = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(242, 239, 223));
+        setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("SalaID");
 
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Fecha");
 
+        txtfuncionid.setBackground(new java.awt.Color(208, 217, 212));
+        txtfuncionid.setForeground(new java.awt.Color(89, 85, 76));
+
+        txtpeliculaid.setBackground(new java.awt.Color(208, 217, 212));
+        txtpeliculaid.setForeground(new java.awt.Color(89, 85, 76));
+
+        txtsalaid.setBackground(new java.awt.Color(208, 217, 212));
+        txtsalaid.setForeground(new java.awt.Color(89, 85, 76));
+
+        txtfecha.setBackground(new java.awt.Color(208, 217, 212));
+        txtfecha.setForeground(new java.awt.Color(89, 85, 76));
+
+        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
+        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
         btnactualizar.setText("Actualizar");
         btnactualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,8 +83,12 @@ public class FrmFunciones2 extends javax.swing.JPanel {
             }
         });
 
+        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
         btneliminar.setText("Eliminar");
 
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
         btnenviar.setText("Enviar");
         btnenviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,8 +96,11 @@ public class FrmFunciones2 extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("FuncionID");
 
+        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
         btnnuevo.setText("Nuevo");
         btnnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +108,11 @@ public class FrmFunciones2 extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("PeliculaID");
 
+        jtpelicula.setBackground(new java.awt.Color(208, 217, 212));
+        jtpelicula.setForeground(new java.awt.Color(89, 85, 76));
         jtpelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -102,6 +131,8 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtpelicula);
 
+        jtsalas.setBackground(new java.awt.Color(208, 217, 212));
+        jtsalas.setForeground(new java.awt.Color(89, 85, 76));
         jtsalas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -120,8 +151,17 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jtsalas);
 
-        jTextField5.setText("jTextField5");
+        jTextField5.setBackground(new java.awt.Color(208, 217, 212));
+        jTextField5.setForeground(new java.awt.Color(89, 85, 76));
+        jTextField5.setText("Buscar...");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
+        jtfunciones.setBackground(new java.awt.Color(208, 217, 212));
+        jtfunciones.setForeground(new java.awt.Color(89, 85, 76));
         jtfunciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -216,8 +256,7 @@ public class FrmFunciones2 extends javax.swing.JPanel {
                             .addComponent(btnactualizar)
                             .addComponent(btneliminar)
                             .addComponent(btnenviar)
-                            .addComponent(btnnuevo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnnuevo)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -242,6 +281,10 @@ public class FrmFunciones2 extends javax.swing.JPanel {
     private void jtsalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtsalasMouseClicked
 
     }//GEN-LAST:event_jtsalasMouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
 public void nuevo() {
         try {

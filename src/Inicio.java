@@ -73,6 +73,18 @@ public class Inicio extends javax.swing.JFrame {
         jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         content.setForeground(new java.awt.Color(218, 201, 223));
 
@@ -97,6 +109,20 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenu9.setForeground(new java.awt.Color(255, 255, 255));
         jMenu9.setText("Clientes");
+        jMenu9.addMenuKeyListener(new javax.swing.event.MenuKeyListener() {
+            public void menuKeyPressed(javax.swing.event.MenuKeyEvent evt) {
+                jMenu9MenuKeyPressed(evt);
+            }
+            public void menuKeyReleased(javax.swing.event.MenuKeyEvent evt) {
+            }
+            public void menuKeyTyped(javax.swing.event.MenuKeyEvent evt) {
+            }
+        });
+        jMenu9.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jMenu9StateChanged(evt);
+            }
+        });
         jMenu9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu9MouseClicked(evt);
@@ -156,7 +182,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(content, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +244,30 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(fs, BorderLayout.CENTER);
         fs.setBounds(0, 0, 881, 518);
         fs.revalidate();
+        
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu9StateChanged
+        // TODO add your handling code here:
+
+        
+    }//GEN-LAST:event_jMenu9StateChanged
+
+    private void jMenu9MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu9MenuKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jMenu9MenuKeyPressed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        content.revalidate();
+    }//GEN-LAST:event_formMouseMoved
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        content.repaint();
+       content.revalidate();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
