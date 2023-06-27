@@ -14,6 +14,9 @@
 public class aplicaccioncs {
    
     public static void main(String[] args) throws Exception {
+        Inicio i = new Inicio();
+        i.setVisible(true);
+
 
 //        FrmSalas fs = new FrmSalas();
 //        fs.setVisible(true);

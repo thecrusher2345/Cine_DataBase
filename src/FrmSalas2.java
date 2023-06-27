@@ -1,32 +1,28 @@
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 
 /**
  *
  * @author usuario
  */
-
-import java.awt.event.*;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.DefaultComboBoxModel;
-import jdk.internal.foreign.abi.aarch64.TypeClass;
-
-
-public class FrmSalas extends javax.swing.JFrame {
+public class FrmSalas2 extends javax.swing.JPanel {
 
     /**
-     * Creates new form FrmSalas
+     * Creates new form FrmSalas2
      */
-    public FrmSalas() {
+    public FrmSalas2() {
         initComponents();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,8 +33,12 @@ public class FrmSalas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnnuevo = new javax.swing.JButton();
+        btnenviar = new javax.swing.JButton();
         lblID = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         lblnombresala = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         lblcapacidad = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
@@ -46,21 +46,33 @@ public class FrmSalas extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTsalas = new javax.swing.JTable();
-        btnnuevo = new javax.swing.JButton();
-        btnenviar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        btnnuevo.setText("Nuevo");
+        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevoActionPerformed(evt);
+            }
+        });
+
+        btnenviar.setText("Enviar");
+        btnenviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenviarActionPerformed(evt);
             }
         });
 
         lblID.setText("ID");
 
+        jButton3.setText("Actualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         lblnombresala.setText("Nombre");
+
+        jButton4.setText("Eliminar");
 
         lblcapacidad.setText("Cantidad");
 
@@ -101,63 +113,36 @@ public class FrmSalas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTsalas);
 
-        btnnuevo.setText("Nuevo");
-        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnuevoActionPerformed(evt);
-            }
-        });
-
-        btnenviar.setText("Enviar");
-        btnenviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenviarActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Actualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Eliminar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField4)
+                .addGap(156, 156, 156)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblID)
-                            .addComponent(lblnombresala)
-                            .addComponent(lblcapacidad))
+                        .addComponent(lblcapacidad)
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                            .addComponent(txtnombre)
-                            .addComponent(txtcapacidad))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtcapacidad))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblID)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblnombresala)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtnombre))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnenviar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnnuevo)
-                        .addGap(47, 47, 47))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnnuevo))
+                    .addComponent(jTextField4))
+                .addGap(32, 143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,23 +161,17 @@ public class FrmSalas extends javax.swing.JFrame {
                     .addComponent(txtcapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnnuevo)
                     .addComponent(btnenviar)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addGap(52, 52, 52))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
         // TODO add your handling code here:
@@ -204,15 +183,6 @@ public class FrmSalas extends javax.swing.JFrame {
         this.enviar();
     }//GEN-LAST:event_btnenviarActionPerformed
 
-    private void JTsalasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTsalasAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTsalasAncestorAdded
-
-    private void JTsalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTsalasMouseClicked
-        // TODO add your handling code here:
-        this.MouseClick();
-    }//GEN-LAST:event_JTsalasMouseClicked
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
@@ -222,14 +192,19 @@ public class FrmSalas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-       this.mostrar(JTsalas, "SELECT * FROM salas s");
-    }//GEN-LAST:event_formWindowOpened
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public void nuevo() {
+    private void JTsalasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTsalasAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTsalasAncestorAdded
+
+    private void JTsalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTsalasMouseClicked
+        // TODO add your handling code here:
+        this.MouseClick();
+    }//GEN-LAST:event_JTsalasMouseClicked
+ public void nuevo() {
         try {
             SalaBeans sl = new SalaBeans();
             txtid.setText(""+sl.incremento());
