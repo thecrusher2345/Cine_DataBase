@@ -3,24 +3,26 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
 /**
  *
  * @author usuario
  */
-public class FrmFunciones2 extends javax.swing.JPanel {
+public class FrmFunciones extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmFunciones2
+     * Creates new form FrmFunciones
      */
-    public FrmFunciones2() {
+    public FrmFunciones() {
         initComponents();
     }
 
@@ -33,59 +35,29 @@ public class FrmFunciones2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtfuncionid = new javax.swing.JTextField();
-        txtpeliculaid = new javax.swing.JTextField();
-        txtsalaid = new javax.swing.JTextField();
-        txtfecha = new javax.swing.JTextField();
-        btnactualizar = new javax.swing.JButton();
-        btneliminar = new javax.swing.JButton();
         btnenviar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnnuevo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtpelicula = new javax.swing.JTable();
+        txtfuncionid = new javax.swing.JTextField();
+        txtpeliculaid = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtsalas = new javax.swing.JTable();
+        txtsalaid = new javax.swing.JTextField();
+        txtfecha = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
+        btnactualizar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtfunciones = new javax.swing.JTable();
+        btneliminar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(242, 239, 223));
-        setForeground(new java.awt.Color(51, 51, 51));
-
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("SalaID");
-
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Fecha");
-
-        txtfuncionid.setBackground(new java.awt.Color(208, 217, 212));
-        txtfuncionid.setForeground(new java.awt.Color(89, 85, 76));
-
-        txtpeliculaid.setBackground(new java.awt.Color(208, 217, 212));
-        txtpeliculaid.setForeground(new java.awt.Color(89, 85, 76));
-
-        txtsalaid.setBackground(new java.awt.Color(208, 217, 212));
-        txtsalaid.setForeground(new java.awt.Color(89, 85, 76));
-
-        txtfecha.setBackground(new java.awt.Color(208, 217, 212));
-        txtfecha.setForeground(new java.awt.Color(89, 85, 76));
-
-        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
-        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
-        btnactualizar.setText("Actualizar");
-        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnactualizarActionPerformed(evt);
-            }
-        });
-
-        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
-        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
-        btneliminar.setText("Eliminar");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Funciones");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnenviar.setBackground(new java.awt.Color(89, 85, 76));
         btnenviar.setForeground(new java.awt.Color(208, 217, 212));
@@ -95,9 +67,11 @@ public class FrmFunciones2 extends javax.swing.JPanel {
                 btnenviarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 406, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("FuncionID");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 9, -1, -1));
 
         btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
         btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
@@ -107,9 +81,19 @@ public class FrmFunciones2 extends javax.swing.JPanel {
                 btnnuevoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 406, -1, -1));
+
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("SalaID");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 89, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("PeliculaID");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 49, -1, -1));
+
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("Fecha");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 129, -1, -1));
 
         jtpelicula.setBackground(new java.awt.Color(208, 217, 212));
         jtpelicula.setForeground(new java.awt.Color(89, 85, 76));
@@ -131,6 +115,16 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jtpelicula);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 206, 431, 82));
+
+        txtfuncionid.setBackground(new java.awt.Color(208, 217, 212));
+        txtfuncionid.setForeground(new java.awt.Color(89, 85, 76));
+        getContentPane().add(txtfuncionid, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 6, 255, -1));
+
+        txtpeliculaid.setBackground(new java.awt.Color(208, 217, 212));
+        txtpeliculaid.setForeground(new java.awt.Color(89, 85, 76));
+        getContentPane().add(txtpeliculaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 46, 257, -1));
+
         jtsalas.setBackground(new java.awt.Color(208, 217, 212));
         jtsalas.setForeground(new java.awt.Color(89, 85, 76));
         jtsalas.setModel(new javax.swing.table.DefaultTableModel(
@@ -151,6 +145,16 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jtsalas);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 306, 431, 82));
+
+        txtsalaid.setBackground(new java.awt.Color(208, 217, 212));
+        txtsalaid.setForeground(new java.awt.Color(89, 85, 76));
+        getContentPane().add(txtsalaid, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 86, 257, -1));
+
+        txtfecha.setBackground(new java.awt.Color(208, 217, 212));
+        txtfecha.setForeground(new java.awt.Color(89, 85, 76));
+        getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 126, 257, -1));
+
         jTextField5.setBackground(new java.awt.Color(208, 217, 212));
         jTextField5.setForeground(new java.awt.Color(89, 85, 76));
         jTextField5.setText("Buscar...");
@@ -159,6 +163,17 @@ public class FrmFunciones2 extends javax.swing.JPanel {
                 jTextField5ActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 166, 327, -1));
+
+        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
+        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
+        btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 406, -1, -1));
 
         jtfunciones.setBackground(new java.awt.Color(208, 217, 212));
         jtfunciones.setForeground(new java.awt.Color(89, 85, 76));
@@ -175,116 +190,54 @@ public class FrmFunciones2 extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jtfunciones);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 115, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField5)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtfuncionid, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtsalaid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtpeliculaid))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addGap(24, 24, 24))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnactualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btneliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnenviar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnnuevo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtfuncionid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtpeliculaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtsalaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnactualizar)
-                            .addComponent(btneliminar)
-                            .addComponent(btnenviar)
-                            .addComponent(btnnuevo)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 6, 402, 423));
+
+        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 406, -1, -1));
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-
-    }//GEN-LAST:event_btnactualizarActionPerformed
-
     private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
-
+this.enviar();
     }//GEN-LAST:event_btnenviarActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-
+this.nuevo();
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void jtpeliculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtpeliculaMouseClicked
-
+this.MouseClickpeliculas();
     }//GEN-LAST:event_jtpeliculaMouseClicked
 
     private void jtsalasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtsalasMouseClicked
-
+this.MouseClicksalas();
     }//GEN-LAST:event_jtsalasMouseClicked
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        try {
+            this.Actualizar();
+        } catch (Exception ex) {
+            Logger.getLogger(FrmFunciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        this.eliminar();
+    }//GEN-LAST:event_btneliminarActionPerformed
 
 public void nuevo() {
         try {

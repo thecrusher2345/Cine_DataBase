@@ -1,24 +1,26 @@
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
 /**
  *
  * @author usuario
  */
-public class FrmPeliculas2 extends javax.swing.JPanel {
+public class FrmPeliculas extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmPeliculas2
+     * Creates new form FrmPeliculas
      */
-    public FrmPeliculas2() {
+    public FrmPeliculas() {
         initComponents();
     }
 
@@ -31,6 +33,14 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txttitulo = new javax.swing.JTextField();
+        btnnuevo = new javax.swing.JButton();
+        txtgenero = new javax.swing.JTextField();
+        txtduracion = new javax.swing.JTextField();
+        txtclasificacion = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtpeliculas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
@@ -40,70 +50,9 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
         btneliminar = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         btnenviar = new javax.swing.JButton();
-        txttitulo = new javax.swing.JTextField();
-        btnnuevo = new javax.swing.JButton();
-        txtgenero = new javax.swing.JTextField();
-        txtduracion = new javax.swing.JTextField();
-        txtclasificacion = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(242, 239, 223));
-
-        jtpeliculas.setBackground(new java.awt.Color(208, 217, 212));
-        jtpeliculas.setForeground(new java.awt.Color(89, 85, 76));
-        jtpeliculas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Titulo", "Genero", "Duracion", "Clasificacion"
-            }
-        ));
-        jtpeliculas.setGridColor(new java.awt.Color(89, 85, 76));
-        jScrollPane1.setViewportView(jtpeliculas);
-
-        jLabel3.setBackground(new java.awt.Color(208, 217, 212));
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Genero");
-
-        jLabel4.setBackground(new java.awt.Color(208, 217, 212));
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Duracion");
-
-        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
-        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
-        btnactualizar.setText("Actualizar");
-        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnactualizarActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(208, 217, 212));
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Clasificacion");
-
-        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
-        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
-        btneliminar.setText("Eliminar");
-
-        txtid.setBackground(new java.awt.Color(208, 217, 212));
-        txtid.setForeground(new java.awt.Color(89, 85, 76));
-        txtid.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
-        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
-        btnenviar.setText("Enviar");
-        btnenviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenviarActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Peliculas");
 
         txttitulo.setBackground(new java.awt.Color(208, 217, 212));
         txttitulo.setForeground(new java.awt.Color(89, 85, 76));
@@ -158,8 +107,67 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Titulo");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jtpeliculas.setBackground(new java.awt.Color(208, 217, 212));
+        jtpeliculas.setForeground(new java.awt.Color(89, 85, 76));
+        jtpeliculas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Titulo", "Genero", "Duracion", "Clasificacion"
+            }
+        ));
+        jtpeliculas.setGridColor(new java.awt.Color(89, 85, 76));
+        jScrollPane1.setViewportView(jtpeliculas);
+
+        jLabel3.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Genero");
+
+        jLabel4.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("Duracion");
+
+        btnactualizar.setBackground(new java.awt.Color(89, 85, 76));
+        btnactualizar.setForeground(new java.awt.Color(208, 217, 212));
+        btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setBackground(new java.awt.Color(208, 217, 212));
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Clasificacion");
+
+        btneliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btneliminar.setForeground(new java.awt.Color(208, 217, 212));
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
+
+        txtid.setBackground(new java.awt.Color(208, 217, 212));
+        txtid.setForeground(new java.awt.Color(89, 85, 76));
+        txtid.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
+        btnenviar.setText("Enviar");
+        btnenviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenviarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -232,16 +240,9 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
                     .addComponent(btnnuevo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnactualizarActionPerformed
-
-    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
-        // TODO add your handling code here:
-        this.enviar();
-    }//GEN-LAST:event_btnenviarActionPerformed
 
     private void txttituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttituloActionPerformed
         // TODO add your handling code here:
@@ -259,7 +260,30 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
-   public void nuevo(){
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        try {
+            // TODO add your handling code here:
+            this.Actualizar();
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
+        // TODO add your handling code here:
+        this.enviar();
+    }//GEN-LAST:event_btnenviarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        this.eliminar();
+    }//GEN-LAST:event_btneliminarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+  public void nuevo(){
         try {
             PeliculasBeans pb = new PeliculasBeans();
             txtid.setText(""+pb.incremento());
@@ -349,7 +373,6 @@ public class FrmPeliculas2 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
         }
     }
-    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,25 +3,24 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
 /**
  *
  * @author usuario
  */
-public class FmrClientes2 extends javax.swing.JPanel {
+public class FrmClientes extends javax.swing.JFrame {
 
     /**
-     * Creates new form FmrClientes2
+     * Creates new form FrmClientes
      */
-    public FmrClientes2() {
+    public FrmClientes() {
         initComponents();
     }
 
@@ -34,28 +33,58 @@ public class FmrClientes2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbltelefono = new javax.swing.JLabel();
-        txtcedula = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        txtnombres = new javax.swing.JTextField();
-        txtapellidos = new javax.swing.JTextField();
-        txtemail = new javax.swing.JTextField();
-        txttelefono = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JButton();
         lblcedula = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         lblnombres = new javax.swing.JLabel();
+        lbltelefono = new javax.swing.JLabel();
         btnEnviar = new javax.swing.JButton();
+        txtcedula = new javax.swing.JTextField();
         lblapellidos = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
+        txtnombres = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
+        txtapellidos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Jcliente = new javax.swing.JTable();
+        txtemail = new javax.swing.JTextField();
+        txttelefono = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Clientes");
+        setAutoRequestFocus(false);
         setBackground(new java.awt.Color(242, 239, 223));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.white);
+
+        lblcedula.setForeground(new java.awt.Color(51, 51, 51));
+        lblcedula.setText("Cedula");
+        lblcedula.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btnEliminar.setBackground(new java.awt.Color(89, 85, 76));
+        btnEliminar.setForeground(new java.awt.Color(208, 217, 212));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        lblnombres.setForeground(new java.awt.Color(51, 51, 51));
+        lblnombres.setText("Nombres");
 
         lbltelefono.setForeground(new java.awt.Color(51, 51, 51));
         lbltelefono.setText("Telefono");
+
+        btnEnviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnEnviar.setForeground(new java.awt.Color(208, 217, 212));
+        btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
 
         txtcedula.setEditable(false);
         txtcedula.setBackground(new java.awt.Color(208, 217, 212));
@@ -69,6 +98,9 @@ public class FmrClientes2 extends javax.swing.JPanel {
             }
         });
 
+        lblapellidos.setForeground(new java.awt.Color(51, 51, 51));
+        lblapellidos.setText("Apellidos");
+
         jTextField6.setBackground(new java.awt.Color(208, 217, 212));
         jTextField6.setForeground(new java.awt.Color(89, 85, 76));
         jTextField6.setText("Buscar.....");
@@ -76,6 +108,15 @@ public class FmrClientes2 extends javax.swing.JPanel {
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
+            }
+        });
+
+        btnNuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnNuevo.setForeground(new java.awt.Color(208, 217, 212));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -89,10 +130,34 @@ public class FmrClientes2 extends javax.swing.JPanel {
             }
         });
 
+        lblemail.setForeground(new java.awt.Color(51, 51, 51));
+        lblemail.setText("E-mail");
+
         txtapellidos.setBackground(new java.awt.Color(208, 217, 212));
         txtapellidos.setForeground(new java.awt.Color(89, 85, 76));
         txtapellidos.setText("ej.: Mero");
         txtapellidos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        Jcliente.setBackground(new java.awt.Color(208, 217, 212));
+        Jcliente.setForeground(new java.awt.Color(89, 85, 76));
+        Jcliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Cedula", "Nombres", "Apellidos", "E-mail", "Telefono"
+            }
+        ));
+        Jcliente.setGridColor(new java.awt.Color(89, 85, 76));
+        Jcliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JclienteMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Jcliente);
 
         txtemail.setBackground(new java.awt.Color(208, 217, 212));
         txtemail.setForeground(new java.awt.Color(89, 85, 76));
@@ -118,75 +183,14 @@ public class FmrClientes2 extends javax.swing.JPanel {
             }
         });
 
-        lblcedula.setForeground(new java.awt.Color(51, 51, 51));
-        lblcedula.setText("Cedula");
-        lblcedula.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        btnEliminar.setBackground(new java.awt.Color(89, 85, 76));
-        btnEliminar.setForeground(new java.awt.Color(208, 217, 212));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-
-        lblnombres.setForeground(new java.awt.Color(51, 51, 51));
-        lblnombres.setText("Nombres");
-
-        btnEnviar.setBackground(new java.awt.Color(89, 85, 76));
-        btnEnviar.setForeground(new java.awt.Color(208, 217, 212));
-        btnEnviar.setText("Enviar");
-        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarActionPerformed(evt);
-            }
-        });
-
-        lblapellidos.setForeground(new java.awt.Color(51, 51, 51));
-        lblapellidos.setText("Apellidos");
-
-        btnNuevo.setBackground(new java.awt.Color(89, 85, 76));
-        btnNuevo.setForeground(new java.awt.Color(208, 217, 212));
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-
-        lblemail.setForeground(new java.awt.Color(51, 51, 51));
-        lblemail.setText("E-mail");
-
-        Jcliente.setBackground(new java.awt.Color(208, 217, 212));
-        Jcliente.setForeground(new java.awt.Color(89, 85, 76));
-        Jcliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Cedula", "Nombres", "Apellidos", "E-mail", "Telefono"
-            }
-        ));
-        Jcliente.setGridColor(new java.awt.Color(89, 85, 76));
-        Jcliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JclienteMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Jcliente);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblnombres)
                         .addGap(18, 18, 18)
@@ -251,24 +255,9 @@ public class FmrClientes2 extends javax.swing.JPanel {
                     .addComponent(btnNuevo))
                 .addGap(45, 45, 45))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcedulaActionPerformed
-
-    private void txtnombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnombresActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        try {
-            // TODO add your handling code here:
-            this.actualizar();
-        } catch (Exception ex) {
-            Logger.getLogger(FmrClientes2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -280,10 +269,22 @@ public class FmrClientes2 extends javax.swing.JPanel {
         this.enviar();
     }//GEN-LAST:event_btnEnviarActionPerformed
 
+    private void txtcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcedulaActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
         this.nuevo();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void txtnombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombresActionPerformed
 
     private void JclienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JclienteMouseClicked
         // TODO add your handling code here:
@@ -294,9 +295,19 @@ public class FmrClientes2 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txttelefonoActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        try {
+            // TODO add your handling code here:
+            this.actualizar();
+        } catch (Exception ex) {
+
+            Logger.getLogger(FrmClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
 public void nuevo() {
         try {
             ClienteBeans cb = new ClienteBeans();
@@ -393,15 +404,6 @@ public void nuevo() {
     }
     
 
-    //introducimos los modulos
-    public void item(JComboBox modu) {
-        modu.addItem("Salas");
-        
-    }
-    
-    public void Modulo(){
-        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jcliente;

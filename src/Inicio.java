@@ -1,5 +1,6 @@
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
@@ -35,7 +36,8 @@ public class Inicio extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        content = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        ImageIcon = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
@@ -72,6 +74,8 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenu5.setText("jMenu5");
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -85,18 +89,24 @@ public class Inicio extends javax.swing.JFrame {
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
             }
         });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        content.setForeground(new java.awt.Color(218, 201, 223));
-
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 935, Short.MAX_VALUE)
+        javax.swing.GroupLayout ImageIconLayout = new javax.swing.GroupLayout(ImageIcon);
+        ImageIcon.setLayout(ImageIconLayout);
+        ImageIconLayout.setHorizontalGroup(
+            ImageIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 403, Short.MAX_VALUE)
         );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+        ImageIconLayout.setVerticalGroup(
+            ImageIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 305, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(121, 140, 140));
@@ -105,6 +115,11 @@ public class Inicio extends javax.swing.JFrame {
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Inicio");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu9.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,24 +197,23 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ImageIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ImageIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        content.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
         // TODO add your handling code here:
-          FrmPeliculas2 fp = new FrmPeliculas2();
-        getContentPane().add(fp, BorderLayout.CENTER);
-        fp.setBounds(0, 0, 881,518);
-        fp.revalidate();
+////    
+          FrmPeliculas fp = new FrmPeliculas();
+          fp.setVisible(true);
+        
+
     }//GEN-LAST:event_jMenu8MouseClicked
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
@@ -209,10 +223,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        FrmReservas2 fr = new FrmReservas2();
-        getContentPane().add(fr, BorderLayout.CENTER);
-        fr.setBounds(0, 0, 881, 518);
-        fr.revalidate();
+        FrmReservas fr = new FrmReservas();
+        fr.setVisible(true);
+ 
 
     }//GEN-LAST:event_jMenu3MouseClicked
 
@@ -223,28 +236,26 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MouseClicked
         // TODO add your handling code here:
-        FmrClientes2 fc = new FmrClientes2();
-        getContentPane().add(fc, BorderLayout.CENTER);
-        fc.setBounds(0, 0, 881, 518);
-        fc.revalidate();
+
+        FrmClientes fc = new FrmClientes();
+        fc.setVisible(true);
+
     }//GEN-LAST:event_jMenu9MouseClicked
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
         // TODO add your handling code here:
-        FrmFunciones2 ff = new FrmFunciones2();
-        getContentPane().add(ff, BorderLayout.CENTER);
-        ff.setBounds(0, 0, 881, 518);
-        ff.revalidate();
-       
+
+        FrmFunciones ff = new FrmFunciones();
+        ff.setVisible(true);
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        FrmSalas2 fs = new FrmSalas2();
-        getContentPane().add(fs, BorderLayout.CENTER);
-        fs.setBounds(0, 0, 881, 518);
-        fs.revalidate();
-        
+
+        FrmSalas fs = new FrmSalas();
+        fs.setVisible(true);
+
+//        
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu9StateChanged
@@ -260,14 +271,40 @@ public class Inicio extends javax.swing.JFrame {
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
         // TODO add your handling code here:
-        content.revalidate();
+
     }//GEN-LAST:event_formMouseMoved
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         // TODO add your handling code here:
-        content.repaint();
-       content.revalidate();
+
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        Image imginicio = new Image(ImageIcon, "/icon/diseno-cine_24911-41892.png");
+        ImageIcon.add(imginicio).repaint();
+                 ImageIcon.setOpaque(false);
+         ImageIcon.setBorder(null);
+         ImageIcon.setBackground(new Color(0,0,0,0));
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        Image imginicio = new Image(ImageIcon, "/icon/diseno-cine_24911-41892.png");
+         ImageIcon.add(imginicio).repaint();
+         ImageIcon.setOpaque(false);
+         ImageIcon.setBorder(null);
+         ImageIcon.setBackground(new Color(0,0,0,0));
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        Image imginicio = new Image(ImageIcon, "icon/diseno-cine_24911-41892.png");
+         ImageIcon.add(imginicio).repaint();
+         ImageIcon.setOpaque(false);
+         ImageIcon.setBorder(null);
+         ImageIcon.setBackground(new Color(0,0,0,0));
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -309,10 +346,13 @@ public class Inicio extends javax.swing.JFrame {
 //        btn.setEnabled(false);
 //        pack();
 //    }
+ // Repintar la interfaz de usuario
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel content;
+    private javax.swing.JPanel ImageIcon;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

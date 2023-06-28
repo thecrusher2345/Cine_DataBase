@@ -8,19 +8,19 @@ import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
 /**
  *
  * @author usuario
  */
-public class FrmSalas2 extends javax.swing.JPanel {
+public class FrmSalas extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmSalas2
+     * Creates new form FrmSalas
      */
-    public FrmSalas2() {
+    public FrmSalas() {
         initComponents();
     }
 
@@ -33,10 +33,6 @@ public class FrmSalas2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        btnnuevo = new javax.swing.JButton();
-        btnenviar = new javax.swing.JButton();
         lblID = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         lblnombresala = new javax.swing.JLabel();
@@ -46,32 +42,13 @@ public class FrmSalas2 extends javax.swing.JPanel {
         txtnombre = new javax.swing.JTextField();
         txtcapacidad = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        btnnuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTsalas = new javax.swing.JTable();
+        btnenviar = new javax.swing.JButton();
 
-        jScrollPane2.setViewportView(jEditorPane1);
-
-        setBackground(new java.awt.Color(242, 239, 223));
-
-        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
-        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
-        btnnuevo.setText("Nuevo");
-        btnnuevo.setBorderPainted(false);
-        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnuevoActionPerformed(evt);
-            }
-        });
-
-        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
-        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
-        btnenviar.setText("Enviar");
-        btnenviar.setFocusPainted(false);
-        btnenviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnenviarActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Salas");
 
         lblID.setBackground(new java.awt.Color(208, 217, 212));
         lblID.setForeground(new java.awt.Color(51, 51, 51));
@@ -85,7 +62,6 @@ public class FrmSalas2 extends javax.swing.JPanel {
         jButton3.setDefaultCapable(false);
         jButton3.setFocusPainted(false);
         jButton3.setFocusable(false);
-        jButton3.setNextFocusableComponent(JTsalas);
         jButton3.setSelected(true);
         jButton3.setVerifyInputWhenFocusTarget(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +106,16 @@ public class FrmSalas2 extends javax.swing.JPanel {
         jTextField4.setText("Buscar...");
         jTextField4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        btnnuevo.setBackground(new java.awt.Color(89, 85, 76));
+        btnnuevo.setForeground(new java.awt.Color(208, 217, 212));
+        btnnuevo.setText("Nuevo");
+        btnnuevo.setBorderPainted(false);
+        btnnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevoActionPerformed(evt);
+            }
+        });
+
         JTsalas.setBackground(new java.awt.Color(208, 217, 212));
         JTsalas.setForeground(new java.awt.Color(89, 85, 76));
         JTsalas.setModel(new javax.swing.table.DefaultTableModel(
@@ -160,8 +146,18 @@ public class FrmSalas2 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(JTsalas);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        btnenviar.setBackground(new java.awt.Color(89, 85, 76));
+        btnenviar.setForeground(new java.awt.Color(208, 217, 212));
+        btnenviar.setText("Enviar");
+        btnenviar.setFocusPainted(false);
+        btnenviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnenviarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -174,7 +170,7 @@ public class FrmSalas2 extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblID)
                         .addGap(62, 62, 62)
-                        .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+                        .addComponent(txtid))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblnombresala)
                         .addGap(29, 29, 29)
@@ -189,7 +185,7 @@ public class FrmSalas2 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnnuevo))
                     .addComponent(jTextField4))
-                .addGap(32, 143, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,32 +212,29 @@ public class FrmSalas2 extends javax.swing.JPanel {
                     .addComponent(btnenviar)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
-        // TODO add your handling code here:
-        this.nuevo();
-    }//GEN-LAST:event_btnnuevoActionPerformed
-
-    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
-        // TODO add your handling code here:
-        this.enviar();
-    }//GEN-LAST:event_btnenviarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             // TODO add your handling code here:
             this.Actualizar();
         } catch (Exception ex) {
-            Logger.getLogger(FrmSalas2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrmSalas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidActionPerformed
+
+    private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
+        // TODO add your handling code here:
+        this.nuevo();
+    }//GEN-LAST:event_btnnuevoActionPerformed
 
     private void JTsalasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTsalasAncestorAdded
         // TODO add your handling code here:
@@ -251,7 +244,16 @@ public class FrmSalas2 extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.MouseClick();
     }//GEN-LAST:event_JTsalasMouseClicked
- public void nuevo() {
+
+    private void btnenviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenviarActionPerformed
+        // TODO add your handling code here:
+        this.enviar();
+    }//GEN-LAST:event_btnenviarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+public void nuevo() {
         try {
             SalaBeans sl = new SalaBeans();
             txtid.setText(""+sl.incremento());
@@ -341,16 +343,13 @@ public class FrmSalas2 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
         }
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTsalas;
     private javax.swing.JButton btnenviar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblcapacidad;
