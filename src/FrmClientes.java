@@ -86,7 +86,6 @@ public class FrmClientes extends javax.swing.JFrame {
             }
         });
 
-        txtcedula.setEditable(false);
         txtcedula.setBackground(new java.awt.Color(208, 217, 212));
         txtcedula.setColumns(5);
         txtcedula.setForeground(new java.awt.Color(89, 85, 76));
