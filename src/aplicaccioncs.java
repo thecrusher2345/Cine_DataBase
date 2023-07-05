@@ -14,8 +14,8 @@
 public class aplicaccioncs {
    
     public static void main(String[] args) throws Exception {
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
+//        Inicio inicio = new Inicio();
+//        inicio.setVisible(true);
 //        FrmSalas fs = new FrmSalas();
 //        fs.setVisible(true);
 //        FrmCliente fc=new FrmCliente();
