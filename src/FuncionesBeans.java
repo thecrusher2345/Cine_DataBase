@@ -8,6 +8,7 @@
  * @author usuario
  */
 import java.sql.*;
+import javax.swing.JOptionPane;
 public class FuncionesBeans {
     int funcion_id;
     int pelicula_id;
@@ -70,8 +71,14 @@ public class FuncionesBeans {
      
     public void insertar_funcion()throws Exception{
 
-            String cadena ="insert into funciones values('"+ getFuncion_id()+"','"+ getPelicula_id()+"','"+ getSala_id()+"','"+ getFecha_hora()+"')";
-            bd.actualizabd(cadena);  
+            String cadena ="insert into funciones values('"+ getFuncion_id()+"','"+ getPelicula_id()+"','"+ getSala_id()+"','"+ getFecha_hora()+"', NULL)";
+            bd.actualizabd(cadena); 
+            
+    }
+    
+    public void insertar_capacidad() throws Exception{
+        String cadena2= "update funciones set disponible =(SELECT capacidad FROM salas WHERE funciones.sala_id= salas.sala_id)where funcion_id="+getFuncion_id()+";";
+        bd.actualizabd(cadena2);
     }
     
     public void actulizar_funcion() throws Exception{
@@ -88,11 +95,20 @@ public class FuncionesBeans {
 
         return bd.consultabd(sql);
         
+ 
+        
     }
+//
+//       public void cantidad_asientos() throws SQLException{
+//        String cadena="SELECT sala_id, capacidad FROM salas s where sala_id="+getSala_id()+";";
+//        bd.consultabd(cadena);
+//    }
+//      
 
-    
-      
+    public ResultSet consultar_asiento(String sql) throws SQLException{
 
+        return bd.consultabd(sql);
+    }
     
     
 
