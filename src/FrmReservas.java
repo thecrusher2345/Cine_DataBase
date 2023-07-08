@@ -10,18 +10,23 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author usuario
  */
 public class FrmReservas extends javax.swing.JFrame {
+   ReservaBeans rb;
 
     /**
      * Creates new form FrmReservas
      */
-    public FrmReservas() {
+    public FrmReservas() throws Exception {
         initComponents();
+           rb = new ReservaBeans();
+        this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+        this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
+        this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
+     
     }
 
     /**
@@ -52,8 +57,9 @@ public class FrmReservas extends javax.swing.JFrame {
         jtcliente = new javax.swing.JTable();
         txtfuncion_id = new javax.swing.JTextField();
         btnenviar = new javax.swing.JButton();
+        Retorno = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reservas");
 
         jLabel2.setBackground(new java.awt.Color(208, 217, 212));
@@ -212,6 +218,15 @@ public class FrmReservas extends javax.swing.JFrame {
             }
         });
 
+        Retorno.setBackground(new java.awt.Color(89, 85, 76));
+        Retorno.setForeground(new java.awt.Color(208, 217, 212));
+        Retorno.setText("Regresar");
+        Retorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetornoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,7 +264,7 @@ public class FrmReservas extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(21, 21, 21)
                 .addComponent(btnactualizar)
                 .addGap(18, 18, 18)
                 .addComponent(btneliminar)
@@ -257,6 +272,8 @@ public class FrmReservas extends javax.swing.JFrame {
                 .addComponent(btnenviar)
                 .addGap(18, 18, 18)
                 .addComponent(btnnuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Retorno)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -288,13 +305,14 @@ public class FrmReservas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnactualizar)
                     .addComponent(btneliminar)
                     .addComponent(btnenviar)
-                    .addComponent(btnnuevo))
-                .addGap(19, 19, 19))
+                    .addComponent(btnnuevo)
+                    .addComponent(Retorno))
+                .addGap(13, 13, 13))
         );
 
         pack();
@@ -355,26 +373,35 @@ public class FrmReservas extends javax.swing.JFrame {
         this.enviar();
     }//GEN-LAST:event_btnenviarActionPerformed
 
+    private void RetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetornoActionPerformed
+        Inicio in;
+        try {
+            in = new Inicio();
+            in.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmReservas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RetornoActionPerformed
+
     /**
      * @param args the command line arguments
      */
- public void nuevo() {
+    public void nuevo() {
         try {
             ReservaBeans rb = new ReservaBeans();
-            txtreservas_id.setText(""+rb.incremento());
+            txtreservas_id.setText("" + rb.incremento());
             txtfuncion_id.setText("");
             txtcliente_id.setText("");
             txttickets.setText("");
             this.mostrar(jtfuncion, "SELECT * FROM funciones f");
             this.mostrar(jtcliente, "SELECT * FROM clientes p");
-            this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
+            this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error" + e.toString());
         }
 
     }
-    
-
 
     public void enviar() {
         try {
@@ -383,19 +410,19 @@ public class FrmReservas extends javax.swing.JFrame {
             rb.setFuncion_id((Integer.parseInt(txtfuncion_id.getText())));
             rb.setCliente_id((Integer.parseInt(txtcliente_id.getText())));
             rb.setCantidad_tickets(Integer.parseInt(txttickets.getText()));
-            rb.disponible();
             rb.insertar_reserva();
-            
+            rb.disponible();
+
             this.mostrar(jtfuncion, "SELECT * FROM funciones f");
             this.mostrar(jtcliente, "SELECT * FROM clientes p");
             this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
-            
+
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
         }
     }
-    
+
     private void mostrar(javax.swing.JTable JT, String sql) {
         try {
             ReservaBeans rb = new ReservaBeans();
@@ -407,7 +434,7 @@ public class FrmReservas extends javax.swing.JFrame {
             rsmd = rs.getMetaData();
             int cantcolum = rsmd.getColumnCount();
             for (int i = 0; i < cantcolum; i++) {
-                model.addColumn(rsmd.getColumnLabel(i+1));
+                model.addColumn(rsmd.getColumnLabel(i + 1));
 
             }
             while (rs.next()) {
@@ -424,24 +451,22 @@ public class FrmReservas extends javax.swing.JFrame {
         }
 
     }
-    
-    private void MouseClickfuncion(){
-        int fila1= jtfuncion.getSelectedRow();
+
+    private void MouseClickfuncion() {
+        int fila1 = jtfuncion.getSelectedRow();
 
         txtfuncion_id.setText(jtfuncion.getModel().getValueAt(fila1, 0).toString());
 
-        
-        
     }
-    private void MouseClicclientes(){
-        
-        int fila2= jtcliente.getSelectedRow();
+
+    private void MouseClicclientes() {
+
+        int fila2 = jtcliente.getSelectedRow();
         txtcliente_id.setText(jtcliente.getModel().getValueAt(fila2, 0).toString());
-        
-        
+
     }
-    
-    public void Actualizar()throws Exception{
+
+    public void Actualizar() throws Exception {
         try {
             ReservaBeans rb = new ReservaBeans();
             rb.setReserva_id((Integer.parseInt(txtreservas_id.getText())));
@@ -457,8 +482,8 @@ public class FrmReservas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
         }
     }
-    
-    public void eliminar(){
+
+    public void eliminar() {
         try {
             ReservaBeans rb = new ReservaBeans();
             rb.setReserva_id(Integer.parseInt(txtreservas_id.getText()));
@@ -468,21 +493,22 @@ public class FrmReservas extends javax.swing.JFrame {
             this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " +e.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
     }
-    private void MouseClick(){
-        
-        int fila3= jtcliente.getSelectedRow();
+
+    private void MouseClick() {
+
+        int fila3 = jtcliente.getSelectedRow();
         txtreservas_id.setText(jtcliente.getModel().getValueAt(fila3, 0).toString());
         txtfuncion_id.setText(jtcliente.getModel().getValueAt(fila3, 1).toString());
         txtcliente_id.setText(jtcliente.getModel().getValueAt(fila3, 2).toString());
         txttickets.setText(jtcliente.getModel().getValueAt(fila3, 3).toString());
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Retorno;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnenviar;

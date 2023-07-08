@@ -10,18 +10,21 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author usuario
  */
 public class FrmSalas extends javax.swing.JFrame {
 
+    SalaBeans sl;
+
     /**
      * Creates new form FrmSalas
      */
-    public FrmSalas() {
+    public FrmSalas() throws Exception {
         initComponents();
+        sl = new SalaBeans();
+        this.mostrar(JTsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
     }
 
     /**
@@ -46,8 +49,9 @@ public class FrmSalas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTsalas = new javax.swing.JTable();
         btnenviar = new javax.swing.JButton();
+        Retorno = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Salas");
 
         lblID.setBackground(new java.awt.Color(208, 217, 212));
@@ -156,6 +160,15 @@ public class FrmSalas extends javax.swing.JFrame {
             }
         });
 
+        Retorno.setBackground(new java.awt.Color(89, 85, 76));
+        Retorno.setForeground(new java.awt.Color(208, 217, 212));
+        Retorno.setText("Regresar");
+        Retorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetornoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,7 +196,9 @@ public class FrmSalas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnenviar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnnuevo))
+                        .addComponent(btnnuevo)
+                        .addGap(4, 4, 4)
+                        .addComponent(Retorno))
                     .addComponent(jTextField4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -211,7 +226,8 @@ public class FrmSalas extends javax.swing.JFrame {
                     .addComponent(btnnuevo)
                     .addComponent(btnenviar)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(Retorno))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -250,13 +266,21 @@ public class FrmSalas extends javax.swing.JFrame {
         this.enviar();
     }//GEN-LAST:event_btnenviarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-public void nuevo() {
+    private void RetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetornoActionPerformed
+        Inicio in;
         try {
-            SalaBeans sl = new SalaBeans();
-            txtid.setText(""+sl.incremento());
+            in = new Inicio();
+            in.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmSalas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RetornoActionPerformed
+
+
+    public void nuevo() {
+        try {
+            txtid.setText("" + sl.incremento());
             txtnombre.setText("");
             txtcapacidad.setText("");
         } catch (Exception e) {
@@ -267,12 +291,11 @@ public void nuevo() {
 
     public void enviar() {
         try {
-            SalaBeans sb = new SalaBeans();
-            sb.setSala_id((Integer.parseInt(txtid.getText())));
-            sb.setNombre(txtnombre.getText());
-            sb.setCapacidad(txtcapacidad.getText());
-            sb.insertar_salas();
-            this.mostrar(JTsalas, "SELECT * FROM salas s");
+            sl.setSala_id((Integer.parseInt(txtid.getText())));
+            sl.setNombre(txtnombre.getText());
+            sl.setCapacidad(txtcapacidad.getText());
+            sl.insertar_salas();
+            this.mostrar(JTsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -281,7 +304,6 @@ public void nuevo() {
 
     private void mostrar(javax.swing.JTable JT, String sql) {
         try {
-            SalaBeans sl = new SalaBeans();
             ResultSet rs;
             DefaultTableModel model = new DefaultTableModel();
             JT.setModel(model);
@@ -290,7 +312,7 @@ public void nuevo() {
             rsmd = rs.getMetaData();
             int cantcolum = rsmd.getColumnCount();
             for (int i = 0; i < cantcolum; i++) {
-                model.addColumn(rsmd.getColumnLabel(i+1));
+                model.addColumn(rsmd.getColumnLabel(i + 1));
 
             }
             while (rs.next()) {
@@ -307,44 +329,43 @@ public void nuevo() {
         }
 
     }
-    
-    private void MouseClick(){
-        int fila= JTsalas.getSelectedRow();
+
+    private void MouseClick() {
+        int fila = JTsalas.getSelectedRow();
         txtid.setText(JTsalas.getModel().getValueAt(fila, 0).toString());
         txtnombre.setText(JTsalas.getModel().getValueAt(fila, 1).toString());
         txtcapacidad.setText(JTsalas.getModel().getValueAt(fila, 3).toString());
-        
+
     }
-    
-    
-    
-    public void Actualizar()throws Exception{
+
+    public void Actualizar() throws Exception {
         try {
-            SalaBeans sl = new SalaBeans();
             sl.setSala_id((Integer.parseInt(txtid.getText())));
             sl.setNombre(txtnombre.getText());
             sl.setCapacidad(txtcapacidad.getText());
             sl.actulizar_salas();
-            
-            this.mostrar(JTsalas, "SELECT * FROM salas s");
+
+            this.mostrar(JTsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
         }
     }
-    public void eliminar(){
+
+    public void eliminar() {
         try {
-            SalaBeans sl = new SalaBeans();
             sl.setSala_id((Integer.parseInt(txtid.getText())));
             sl.actulizar_salas();
-            this.mostrar(JTsalas, "SELECT * FROM clientes c");
+            this.mostrar(JTsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " +e.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         }
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JTsalas;
+    private javax.swing.JButton Retorno;
     private javax.swing.JButton btnenviar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton jButton3;

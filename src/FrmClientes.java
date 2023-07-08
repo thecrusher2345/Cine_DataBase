@@ -16,12 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class FrmClientes extends javax.swing.JFrame {
+    ClienteBeans cb;
 
     /**
      * Creates new form FrmClientes
      */
-    public FrmClientes() {
+    public FrmClientes() throws Exception {
         initComponents();
+        cb = new ClienteBeans();
+         this.mostrar(Jcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
+        
     }
 
     /**
@@ -50,8 +54,9 @@ public class FrmClientes extends javax.swing.JFrame {
         txtemail = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
+        Retorno2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clientes");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(242, 239, 223));
@@ -182,32 +187,32 @@ public class FrmClientes extends javax.swing.JFrame {
             }
         });
 
+        Retorno2.setBackground(new java.awt.Color(89, 85, 76));
+        Retorno2.setForeground(new java.awt.Color(208, 217, 212));
+        Retorno2.setText("Regresar");
+        Retorno2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Retorno2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(156, 156, 156)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
                         .addComponent(lblnombres)
                         .addGap(18, 18, 18)
                         .addComponent(txtnombres))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEnviar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNuevo))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
                         .addComponent(lblcedula)
                         .addGap(30, 30, 30)
                         .addComponent(txtcedula))
-                    .addComponent(jTextField6)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblapellidos)
                             .addComponent(lbltelefono)
@@ -218,6 +223,21 @@ public class FrmClientes extends javax.swing.JFrame {
                             .addComponent(txtapellidos)
                             .addComponent(txttelefono))))
                 .addGap(210, 210, 210))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnActualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEnviar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Retorno2)))
+                .addGap(162, 162, 162))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,14 +264,15 @@ public class FrmClientes extends javax.swing.JFrame {
                     .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnEliminar)
                     .addComponent(btnEnviar)
-                    .addComponent(btnNuevo))
+                    .addComponent(btnNuevo)
+                    .addComponent(Retorno2))
                 .addGap(45, 45, 45))
         );
 
@@ -304,18 +325,29 @@ public class FrmClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void Retorno2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Retorno2ActionPerformed
+        // TODO add your handling code here:Inicio in;
+        Inicio in;
+        try {
+            in = new Inicio();
+            in.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Retorno2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 public void nuevo() {
         try {
-            ClienteBeans cb = new ClienteBeans();
             txtcedula.setText("");
             txtnombres.setText("");
             txtapellidos.setText("");
             txtemail.setText("");
             txttelefono.setText("");
-            this.mostrar(Jcliente, "SELECT * FROM clientes c");
+            this.mostrar(Jcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error" + e.toString());
         }
@@ -323,14 +355,13 @@ public void nuevo() {
 
     public void enviar() {
         try {
-            ClienteBeans cb = new ClienteBeans();
             cb.setId_Cliente(Integer.parseInt(txtcedula.getText()));
             cb.setNombre(txtnombres.getText());
             cb.setApellido(txtapellidos.getText());
             cb.setEmail(txtemail.getText());
             cb.setTelefono(txttelefono.getText());
             cb.insertar_cliente();
-            this.mostrar(Jcliente, "SELECT * FROM clientes c");
+            this.mostrar(Jcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
             JOptionPane.showMessageDialog(null, "La infromacion se guardo con exito!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error de Transaccion: " + e.toString());
@@ -349,7 +380,6 @@ public void nuevo() {
     
     private void mostrar(javax.swing.JTable JT, String sql) {
         try {
-            ClienteBeans cb = new ClienteBeans();
             ResultSet rs;
             DefaultTableModel model = new DefaultTableModel();
             JT.setModel(model);
@@ -376,14 +406,13 @@ public void nuevo() {
     }
     public void actualizar() throws Exception{
         try {
-            ClienteBeans cb = new ClienteBeans();
             cb.setId_Cliente(Integer.parseInt(txtcedula.getText()));
             cb.setNombre(txtnombres.getText());
             cb.setApellido(txtapellidos.getText());
             cb.setEmail(txtemail.getText());
             cb.setTelefono(txttelefono.getText());
             cb.actulizar_cliente();
-            this.mostrar(Jcliente, "SELECT * FROM clientes c");
+            this.mostrar(Jcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
@@ -392,10 +421,9 @@ public void nuevo() {
     }
     public void eliminar(){
         try {
-            ClienteBeans cb = new ClienteBeans();
             cb.setId_Cliente(Integer.parseInt(txtcedula.getText()));
             cb.actulizar_cliente();
-            this.mostrar(Jcliente, "SELECT * FROM clientes c");
+            this.mostrar(Jcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
@@ -406,6 +434,7 @@ public void nuevo() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Jcliente;
+    private javax.swing.JButton Retorno2;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEnviar;

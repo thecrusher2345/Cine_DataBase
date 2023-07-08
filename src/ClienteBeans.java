@@ -87,13 +87,13 @@ public class ClienteBeans {
     }
     
     public void actulizar_cliente() throws Exception{
-        String cadena ="UPDATE clientes set id='"+getId_Cliente()+"', nombre='"+getNombre()+"', apellido='"+getApellido()+"', email='"+getEmail()+"', telefono='"+getTelefono()+"' WHERE id='"+getId_Cliente()+"'";
+        String cadena ="UPDATE clientes set cliente_id='"+getId_Cliente()+"', nombre='"+getNombre()+"', apellido='"+getApellido()+"', email='"+getEmail()+"', telefono='"+getTelefono()+"' WHERE cliente_id='"+getId_Cliente()+"'";
         bd.actualizabd(cadena);
         
     }
     
     public void eliminar_cliente() throws Exception{
-         String cadena ="DELETE FROM clientes WHERE id='"+getId_Cliente()+"'";
+         String cadena ="DELETE FROM clientes WHERE cliente_id='"+getId_Cliente()+"';";
         bd.actualizabd(cadena);
     }
     public ResultSet consultarTabla(String sql) throws SQLException{

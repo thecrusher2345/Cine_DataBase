@@ -1,27 +1,116 @@
 
+import java.sql.ResultSet;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author usuario
  */
-public class Inicio extends javax.swing.JFrame {
+public final class Inicio extends javax.swing.JFrame {
+
+    FuncionesBeans funcion;
 
     /**
      * Creates new form Inicio
+     *
+     * @throws java.lang.Exception
      */
-    public Inicio() {
+    public Inicio() throws Exception {
         initComponents();
+        funcion = new FuncionesBeans();
+        setLocationRelativeTo(null);
+        CrearCartelera();
+        setResizable(false);
     }
-       
+
+    private void CrearCartelera() throws SQLException {
+        ResultSet rs = (ResultSet) funcion.consultarTabla("select peliculas.titulo as 'Pelicula', peliculas.genero as 'Genero', salas.nombre as 'Sala', DATE_FORMAT(funciones.fecha_hora, '%H:%i') AS 'Hora'\n"
+                + "from peliculas inner join (funciones inner join salas on funciones.sala_id = salas.sala_id) on funciones.pelicula_id = peliculas.pelicula_id");
+
+        // Obtener el número de filas en el resultado del ResultSet
+        int numRows = 0;
+        if (rs.last()) {
+            numRows = rs.getRow();
+            rs.beforeFirst();
+        }
+
+        // Crear el JPanel que contendrá los JLabels
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        Cartelera.setLayout(gridBagLayout);
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(0, 0, 0, 30); // Espacio de 30px entre columnas
+
+        int row = 0;
+        int column = 0;
+
+        while (rs.next()) {
+            String pelicula = rs.getString("Pelicula");
+            String genero = rs.getString("Genero");
+            String sala = rs.getString("Sala");
+            String hora = rs.getString("Hora");
+
+            // Crear y configurar los JLabels
+            JLabel peliculaLabel = new JLabel(pelicula);
+            JLabel generoLabel = new JLabel(genero);
+            JLabel salaLabel = new JLabel(sala);
+            JLabel horaLabel = new JLabel(hora);
+
+            // Ajustar la alineación horizontal de los JLabels
+            peliculaLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            generoLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            salaLabel.setHorizontalAlignment(SwingConstants.LEFT);
+            horaLabel.setHorizontalAlignment(SwingConstants.LEFT);
+
+            // Agregar los JLabels al JPanel utilizando el GridBagLayout
+            constraints.gridx = column;
+            constraints.gridy = row;
+            Cartelera.add(peliculaLabel, constraints);
+
+            constraints.gridy = row + 1;
+            Cartelera.add(generoLabel, constraints);
+
+            constraints.gridy = row + 2;
+            Cartelera.add(salaLabel, constraints);
+
+            constraints.gridy = row + 3;
+            Cartelera.add(horaLabel, constraints);
+            
+            constraints.gridy = row + 3;
+            Cartelera.add(horaLabel, constraints);
+
+            // Actualizar las coordenadas de fila y columna
+            column++;
+            if (column == 3) {
+                column = 0;
+                row += 6; // Salto de línea cada 6 filas
+            }
+        }
+
+        Component[] components = Cartelera.getComponents();
+        for (int i = 0; i < components.length; i += 4) {
+            JLabel peliculaLabel = (JLabel) components[i];
+            JLabel generoLabel = (JLabel) components[i + 1];
+            JLabel salaLabel = (JLabel) components[i + 2];
+            JLabel horaLabel = (JLabel) components[i + 3];
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +126,8 @@ public class Inicio extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        ImageIcon = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Cartelera = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
@@ -98,21 +188,22 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ImageIconLayout = new javax.swing.GroupLayout(ImageIcon);
-        ImageIcon.setLayout(ImageIconLayout);
-        ImageIconLayout.setHorizontalGroup(
-            ImageIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+        javax.swing.GroupLayout CarteleraLayout = new javax.swing.GroupLayout(Cartelera);
+        Cartelera.setLayout(CarteleraLayout);
+        CarteleraLayout.setHorizontalGroup(
+            CarteleraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 498, Short.MAX_VALUE)
         );
-        ImageIconLayout.setVerticalGroup(
-            ImageIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+        CarteleraLayout.setVerticalGroup(
+            CarteleraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 311, Short.MAX_VALUE)
         );
+
+        jScrollPane1.setViewportView(Cartelera);
 
         jMenuBar1.setBackground(new java.awt.Color(121, 140, 140));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Inicio");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,22 +288,30 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ImageIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ImageIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseClicked
-        // TODO add your handling code here:
-////    
-          FrmPeliculas fp = new FrmPeliculas();
-          fp.setVisible(true);
-        
+        FrmPeliculas fp = null;
+        try {
+            fp = new FrmPeliculas();
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fp.setVisible(true);
+        this.setVisible(false);
+
 
     }//GEN-LAST:event_jMenu8MouseClicked
 
@@ -223,45 +322,58 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        FrmReservas fr = new FrmReservas();
+        FrmReservas fr = null;
+        try {
+            fr = new FrmReservas();
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         fr.setVisible(true);
- 
-
+        this.setVisible(false);
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu9ActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_jMenu9ActionPerformed
 
     private void jMenu9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu9MouseClicked
-        // TODO add your handling code here:
-
-        FrmClientes fc = new FrmClientes();
+        FrmClientes fc = null;
+        try {
+            fc = new FrmClientes();
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         fc.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jMenu9MouseClicked
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
-        // TODO add your handling code here:
-
-        FrmFunciones ff = new FrmFunciones();
+        FrmFunciones ff = null;
+        try {
+            ff = new FrmFunciones();
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ff.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        // TODO add your handling code here:
-
-        FrmSalas fs = new FrmSalas();
+        FrmSalas fs;
+        try {
+            fs = new FrmSalas();
         fs.setVisible(true);
+        this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 //        
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu9StateChanged
-        // TODO add your handling code here:
 
-        
     }//GEN-LAST:event_jMenu9StateChanged
 
     private void jMenu9MenuKeyPressed(javax.swing.event.MenuKeyEvent evt) {//GEN-FIRST:event_jMenu9MenuKeyPressed
@@ -280,76 +392,51 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-        Image imginicio = new Image(ImageIcon, "/icon/diseno-cine_24911-41892.png");
-        ImageIcon.add(imginicio).repaint();
-                 ImageIcon.setOpaque(false);
-         ImageIcon.setBorder(null);
-         ImageIcon.setBackground(new Color(0,0,0,0));
+
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        Image imginicio = new Image(ImageIcon, "/icon/diseno-cine_24911-41892.png");
-         ImageIcon.add(imginicio).repaint();
-         ImageIcon.setOpaque(false);
-         ImageIcon.setBorder(null);
-         ImageIcon.setBackground(new Color(0,0,0,0));
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-        Image imginicio = new Image(ImageIcon, "icon/diseno-cine_24911-41892.png");
-         ImageIcon.add(imginicio).repaint();
-         ImageIcon.setOpaque(false);
-         ImageIcon.setBorder(null);
-         ImageIcon.setBackground(new Color(0,0,0,0));
+
     }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Inicio().setVisible(true);
-//            }
-//        });
-//    }
-//
-//    private void showpanel( javax.swing.JPanel panel , javax.swing.JButton btn){
-//        getContentPane().add(panel, BorderLayout.CENTER);
-//        btn.setEnabled(false);
-//        pack();
-//    }
- // Repintar la interfaz de usuario
- 
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    new Inicio().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    private void showpanel(javax.swing.JPanel panel, javax.swing.JButton btn) {
+        getContentPane().add(panel, BorderLayout.CENTER);
+        btn.setEnabled(false);
+        pack();
+    }
+    // Repintar la interfaz de usuario
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ImageIcon;
+    private javax.swing.JPanel Cartelera;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -362,5 +449,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

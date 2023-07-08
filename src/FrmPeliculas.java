@@ -16,12 +16,16 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class FrmPeliculas extends javax.swing.JFrame {
+    PeliculasBeans pb;
 
     /**
      * Creates new form FrmPeliculas
      */
-    public FrmPeliculas() {
+    public FrmPeliculas() throws Exception {
         initComponents();
+        setLocationRelativeTo(null);
+        pb = new PeliculasBeans();
+        this.mostrar(jtpeliculas, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
     }
 
     /**
@@ -50,8 +54,9 @@ public class FrmPeliculas extends javax.swing.JFrame {
         btneliminar = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         btnenviar = new javax.swing.JButton();
+        Retorno = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Peliculas");
 
         txttitulo.setBackground(new java.awt.Color(208, 217, 212));
@@ -166,26 +171,27 @@ public class FrmPeliculas extends javax.swing.JFrame {
             }
         });
 
+        Retorno.setBackground(new java.awt.Color(89, 85, 76));
+        Retorno.setForeground(new java.awt.Color(208, 217, 212));
+        Retorno.setText("Regresar");
+        Retorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetornoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnactualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btneliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnenviar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnnuevo))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(63, 63, 63)
-                        .addComponent(txtgenero))
+                        .addComponent(txtgenero, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(53, 53, 53)
@@ -202,8 +208,18 @@ public class FrmPeliculas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(71, 71, 71)
-                        .addComponent(txttitulo)))
-                .addGap(229, 229, 229))
+                        .addComponent(txttitulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnactualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btneliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnenviar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnnuevo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Retorno)))
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,13 +248,14 @@ public class FrmPeliculas extends javax.swing.JFrame {
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnactualizar)
                     .addComponent(btneliminar)
                     .addComponent(btnenviar)
-                    .addComponent(btnnuevo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnnuevo)
+                    .addComponent(Retorno))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -280,6 +297,17 @@ public class FrmPeliculas extends javax.swing.JFrame {
         this.eliminar();
     }//GEN-LAST:event_btneliminarActionPerformed
 
+    private void RetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetornoActionPerformed
+        Inicio in;
+        try {
+            in = new Inicio();
+        in.setVisible(true);
+        this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPeliculas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RetornoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,7 +319,7 @@ public class FrmPeliculas extends javax.swing.JFrame {
             txtgenero.setText("");
             txtduracion.setText("");
             txtclasificacion.setText("");
-            this.mostrar(jtpeliculas, "SELECT * FROM peliculas p");
+            this.mostrar(jtpeliculas, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error"+ e.toString());
         }
@@ -334,7 +362,7 @@ public class FrmPeliculas extends javax.swing.JFrame {
               pb.setDuracion(txtduracion.getText());
                pb.setClasificacion(txtclasificacion.getText());
                pb.insertar_pelicula();
-            this.mostrar(jtpeliculas, "SELECT * FROM peliculas p");
+            this.mostrar(jtpeliculas, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
         } catch (Exception e) {
         }
     }
@@ -356,7 +384,7 @@ public class FrmPeliculas extends javax.swing.JFrame {
             pb.setClasificacion(txtclasificacion.getText());
             pb.actulizar_pelicula();
             
-            this.mostrar(jtpeliculas, "SELECT * FROM peliculas p");
+            this.mostrar(jtpeliculas, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -367,7 +395,7 @@ public class FrmPeliculas extends javax.swing.JFrame {
             PeliculasBeans cb = new PeliculasBeans();
             cb.setPelicula_id(Integer.parseInt(txtid.getText()));
             cb.actulizar_pelicula();
-            this.mostrar(jtpeliculas, "SELECT * FROM peliculas p");
+            this.mostrar(jtpeliculas, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
@@ -376,6 +404,7 @@ public class FrmPeliculas extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Retorno;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnenviar;

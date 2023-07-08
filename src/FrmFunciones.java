@@ -18,15 +18,18 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class FrmFunciones extends javax.swing.JFrame {
+    FuncionesBeans fb;
 
     /**
      * Creates new form FrmFunciones
      */
-    public FrmFunciones() {
+    public FrmFunciones() throws Exception {
         initComponents();
-        this.mostrar(jtpelicula, "SELECT * FROM peliculas p");
-        this.mostrar(jtsalas, "SELECT * FROM salas s");
-        this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+         fb= new FuncionesBeans();
+        this.mostrar(jtpelicula, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
+        this.mostrar(jtsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
+        this.mostrar(jtfunciones, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+       
     }
 
     /**
@@ -57,8 +60,9 @@ public class FrmFunciones extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtfunciones = new javax.swing.JTable();
         btneliminar = new javax.swing.JButton();
+        Retorno = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Funciones");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,7 +74,7 @@ public class FrmFunciones extends javax.swing.JFrame {
                 btnenviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 406, -1, -1));
+        getContentPane().add(btnenviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("FuncionID");
@@ -84,7 +88,7 @@ public class FrmFunciones extends javax.swing.JFrame {
                 btnnuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 406, -1, -1));
+        getContentPane().add(btnnuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("SalaID");
@@ -176,7 +180,7 @@ public class FrmFunciones extends javax.swing.JFrame {
                 btnactualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 406, -1, -1));
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
         jtfunciones.setBackground(new java.awt.Color(208, 217, 212));
         jtfunciones.setForeground(new java.awt.Color(89, 85, 76));
@@ -203,7 +207,17 @@ public class FrmFunciones extends javax.swing.JFrame {
                 btneliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 406, -1, -1));
+        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, -1, -1));
+
+        Retorno.setBackground(new java.awt.Color(89, 85, 76));
+        Retorno.setForeground(new java.awt.Color(208, 217, 212));
+        Retorno.setText("Regresar");
+        Retorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetornoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Retorno, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -242,9 +256,19 @@ this.MouseClicksalas();
         this.eliminar();
     }//GEN-LAST:event_btneliminarActionPerformed
 
+    private void RetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetornoActionPerformed
+        Inicio in;
+        try {
+            in = new Inicio();
+            in.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmFunciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RetornoActionPerformed
+
 public void nuevo() {
         try {
-            FuncionesBeans fb = new FuncionesBeans();
             LocalDateTime horactual = LocalDateTime.now();
             DateTimeFormatter formated = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             String horactualformat = horactual.format(formated);
@@ -252,10 +276,10 @@ public void nuevo() {
             txtpeliculaid.setText("");
             txtsalaid.setText("");
             txtfecha.setText(horactualformat);
-            this.mostrar(jtpelicula, "SELECT * FROM peliculas p");
-            this.mostrar(jtsalas, "SELECT * FROM salas s");
-            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
-            
+            this.mostrar(jtpelicula, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
+            this.mostrar(jtsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
+            this.mostrar(jtfunciones, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+       
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error" + e.toString());
         }
@@ -266,16 +290,15 @@ public void nuevo() {
 
     public void enviar() {
         try {
-            FuncionesBeans fb = new FuncionesBeans();
             fb.setFuncion_id((Integer.parseInt(txtfuncionid.getText())));
             fb.setPelicula_id((Integer.parseInt(txtpeliculaid.getText())));
             fb.setSala_id((Integer.parseInt(txtsalaid.getText())));
             fb.setFecha_hora(txtfecha.getText());
             fb.insertar_funcion();
             fb.insertar_capacidad();
-            this.mostrar(jtpelicula, "SELECT * FROM peliculas p");
-            this.mostrar(jtsalas, "SELECT * FROM salas s");
-            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtpelicula, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
+        this.mostrar(jtsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
+        this.mostrar(jtfunciones, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion Enviar" + e.toString());
@@ -284,11 +307,10 @@ public void nuevo() {
     
     private void mostrar(javax.swing.JTable JT, String sql) {
         try {
-            SalaBeans sl = new SalaBeans();
             ResultSet rs;
             DefaultTableModel model = new DefaultTableModel();
             JT.setModel(model);
-            rs = sl.consultarTabla(sql);
+            rs = fb.consultarTabla(sql);
             ResultSetMetaData rsmd;
             rsmd = rs.getMetaData();
             int cantcolum = rsmd.getColumnCount();
@@ -327,14 +349,15 @@ public void nuevo() {
     
     public void Actualizar()throws Exception{
         try {
-            FuncionesBeans fb = new FuncionesBeans();
             fb.setFuncion_id((Integer.parseInt(txtfuncionid.getText())));
             fb.setPelicula_id(Integer.parseInt(txtpeliculaid.getText()));
             fb.setSala_id(Integer.parseInt(txtsalaid.getText()));
             fb.setSala_id(Integer.parseInt(txtfecha.getText()));
             fb.actulizar_funcion();
-            
-            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtpelicula, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
+        this.mostrar(jtsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
+        this.mostrar(jtfunciones, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+       
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -343,10 +366,12 @@ public void nuevo() {
     
     public void eliminar(){
         try {
-            FuncionesBeans fb = new FuncionesBeans();
             fb.setFuncion_id(Integer.parseInt(txtfuncionid.getText()));
             fb.actulizar_funcion();
-            this.mostrar(jtfunciones, "SELECT funciones.funcion_id, peliculas.titulo, salas.nombre, funciones.fecha_hora FROM funciones INNER JOIN peliculas ON funciones.pelicula_id = peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtpelicula, "SELECT pelicula_id as \"Cod Pelicula\", titulo as \"Titulo\", genero as \"Genero\", duracion as \"Duracion\", calsificacion as \"Clasificacion\" FROM peliculas p;");
+        this.mostrar(jtsalas, "SELECT sala_id as \"Cod Sala\",nombre as \"Sala\", capacidad as \"Asientos\" FROM salas s;");
+        this.mostrar(jtfunciones, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+       
   JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " +e.toString());
@@ -355,9 +380,9 @@ public void nuevo() {
     
     public void limite_asientos(String sql){
         try {
-            FuncionesBeans sl = new FuncionesBeans();
+            FuncionesBeans fb = new FuncionesBeans();
             ResultSet rs;
-            rs=sl.consultar_asiento(sql);
+            rs=fb.consultar_asiento(sql);
             String id = rs.getString(0);
             String capacidad= rs.getString(1);
             if (id == txtsalaid.getText()) {
@@ -369,6 +394,7 @@ public void nuevo() {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Retorno;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnenviar;
