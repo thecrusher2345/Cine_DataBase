@@ -383,11 +383,13 @@ public class FrmReservas extends javax.swing.JFrame {
             rb.setFuncion_id((Integer.parseInt(txtfuncion_id.getText())));
             rb.setCliente_id((Integer.parseInt(txtcliente_id.getText())));
             rb.setCantidad_tickets(Integer.parseInt(txttickets.getText()));
+            rb.disponible();
             rb.insertar_reserva();
+            
             this.mostrar(jtfuncion, "SELECT * FROM funciones f");
             this.mostrar(jtcliente, "SELECT * FROM clientes p");
             this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
-            rb.disponible();
+            
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());

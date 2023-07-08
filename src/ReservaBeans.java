@@ -92,14 +92,16 @@ public class ReservaBeans {
 
     
 }
-    public void disponible()throws SQLException{
+    public void disponible()throws SQLException, Exception{
         int inc=0;
         ResultSet rs;
-        rs = bd.consultabd("SELECT * FROM reservas r WHERE funcion_id="+getFuncion_id()+";");
-        inc= rs.getInt(4);
-        if(inc>0)
-        rs=bd.consultabd("Update funciones set disponible= disponible -"+inc+" where funcion_id="+getFuncion_id()+";");
-        else{
+        String cadena2= "SELECT cantidad_tickets FROM reservas r WHERE funcion_id="+getFuncion_id()+";";
+        rs = bd.consultabd(cadena2);
+        inc= rs.getInt(0);
+        if(inc!=0){
+            String cadena = "Update funciones set disponible= disponible -"+inc+" where funcion_id="+getFuncion_id()+";";
+        bd.actualizabd(cadena);
+        }else{
             JOptionPane.showMessageDialog(null, "Se ha agotado la funcion");
         }
         
