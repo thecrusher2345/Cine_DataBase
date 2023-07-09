@@ -15,18 +15,19 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class FrmReservas extends javax.swing.JFrame {
-   ReservaBeans rb;
+
+    ReservaBeans rb;
 
     /**
      * Creates new form FrmReservas
      */
     public FrmReservas() throws Exception {
         initComponents();
-           rb = new ReservaBeans();
+        rb = new ReservaBeans();
         this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
         this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
         this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
-     
+
     }
 
     /**
@@ -394,8 +395,8 @@ public class FrmReservas extends javax.swing.JFrame {
             txtfuncion_id.setText("");
             txtcliente_id.setText("");
             txttickets.setText("");
-            this.mostrar(jtfuncion, "SELECT * FROM funciones f");
-            this.mostrar(jtcliente, "SELECT * FROM clientes p");
+            this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
             this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error" + e.toString());
@@ -413,9 +414,9 @@ public class FrmReservas extends javax.swing.JFrame {
             rb.insertar_reserva();
             rb.disponible();
 
-            this.mostrar(jtfuncion, "SELECT * FROM funciones f");
-            this.mostrar(jtcliente, "SELECT * FROM clientes p");
-            this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
+            this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
+            this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
 
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
@@ -474,9 +475,9 @@ public class FrmReservas extends javax.swing.JFrame {
             rb.setCliente_id(Integer.parseInt(txtcliente_id.getText()));
             rb.setCantidad_tickets(Integer.parseInt(txttickets.getText()));
             rb.actulizar_reserva();
-            this.mostrar(jtfuncion, "SELECT * FROM funciones f");
-            this.mostrar(jtcliente, "SELECT * FROM clientes p");
-            this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
+            this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
+            this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
             JOptionPane.showMessageDialog(null, "La Transaccion fue Exitosa!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Eror en la Transaccion" + e.toString());
@@ -488,9 +489,9 @@ public class FrmReservas extends javax.swing.JFrame {
             ReservaBeans rb = new ReservaBeans();
             rb.setReserva_id(Integer.parseInt(txtreservas_id.getText()));
             rb.actulizar_reserva();
-            this.mostrar(jtfuncion, "SELECT * FROM funciones f");
-            this.mostrar(jtcliente, "SELECT * FROM clientes p");
-            this.mostrar(jtreserva, "SELECT reservas.reserva_id,reservas.funcion_id,funciones.fecha_hora,clientes.cliente_id,clientes.nombre,reservas.cantidad_tickets FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id;");
+            this.mostrar(jtfuncion, "SELECT funciones.funcion_id as \"Cod Funcion\", funciones.pelicula_id as \"Cod Pelicula\", peliculas.titulo as \"Titulo\", funciones.sala_id as \"Cod Sala\",salas.nombre as \"Sala\", funciones.fecha_hora as \"Fecha Funcion\", funciones.disponible as \"Asientos Disponibles\" FROM funciones join peliculas on funciones.pelicula_id=peliculas.pelicula_id join salas on funciones.sala_id=salas.sala_id;");
+            this.mostrar(jtcliente, "SELECT cliente_id as \"Cedula\", nombre as \"Nombre\", apellido as \"Apellido\", email as \"E-mail\", telefono as \"Telefono\"  FROM clientes c;");
+            this.mostrar(jtreserva, "SELECT reservas.reserva_id as \"Cod Reserva\",reservas.funcion_id as \"Cod Funcion\",peliculas.titulo as \"Titulo\",funciones.fecha_hora as \"Fecha Funcion\",clientes.cliente_id as\"Cedula\",clientes.nombre as \"Nombre\",reservas.cantidad_tickets as \"Tickets\" FROM reservas INNER JOIN clientes ON reservas.cliente_id = clientes.cliente_id join funciones on reservas.funcion_id=funciones.funcion_id join peliculas on funciones.pelicula_id=peliculas.pelicula_id;");
             JOptionPane.showMessageDialog(null, "La actualizacion fue exitosa");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());

@@ -378,21 +378,7 @@ public void nuevo() {
         }
     }
     
-    public void limite_asientos(String sql){
-        try {
-            FuncionesBeans fb = new FuncionesBeans();
-            ResultSet rs;
-            rs=fb.consultar_asiento(sql);
-            String id = rs.getString(0);
-            String capacidad= rs.getString(1);
-            if (id == txtsalaid.getText()) {
-                
-            }
-            
-            
-        } catch (Exception e) {
-        }
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Retorno;
     private javax.swing.JButton btnactualizar;
